@@ -34,32 +34,36 @@ Open the "CUP / CUV Tracking" tab. Only RC with a sponsor (status "មានអ�
 - Admin: "Admin overview" shows activity by CVC user, the reasons table and the list of items that could not be done.
 - Instructions are inside the "ជំនួយ" (help) buttons, hidden until clicked.
 - Export summary / Export all open in Excel (CSV).
-- Ticks are saved on each device. With ONLINE SYNC they also reach the admin computer automatically.
-  Without sync: Backup tracking on one device, Import / merge on the other.
-- Admin only: Clear all ticks.
+- Ticks are saved on each device. With ONLINE SYNC + SHARED ACCOUNTS (admin sets everything once)
+With this on, the ADMIN creates every username and password once, in the app. Each CVC types that
+username and password on their own phone, once, and the phone remembers it until the admin changes
+the password, deletes the account, or the CVC presses Logout. No setup on the phones.
+Tracking (CUP / CUV ticks and reasons) from all CVC phones appears on the admin computer automatically.
 
-ONLINE SYNC (CVC phones -> admin computer, automatic)
-Needed once, by the admin. Without it each device keeps its own data.
-1. Go to supabase.com, sign in, click "New project" (free plan is enough). Choose a name and a database
-   password, pick the nearest region, wait until it is ready.
-2. Open the project, click "SQL Editor" > "New query". Open the file supabase-setup.sql from this folder,
-   copy ALL of it, paste it, click Run. It should say "Success".
-3. Click Project Settings > API (or "API Keys"). Copy the Project URL and the "anon" / "publishable" key.
-4. Open sync-config.js in this folder with Notepad and paste them between the quotes:
-      url: "https://xxxx.supabase.co",
-      key: "eyJ....",
-   Save the file.
-5. Upload ALL files of this folder to your private host (GitHub), replacing the old ones.
-6. On every device (admin computer and each CVC phone): open the app online once, log in.
-   The tracking tab shows "បានធ្វើសមកាលកម្ម HH:MM" when sync works.
+Set up (once, by the admin):
+1. Go to supabase.com, open your project (or click "New project").
+2. SQL Editor > New query. Open supabase-setup.sql from this folder, copy ALL of it, paste, click Run.
+   It should say "Success". (Safe to run again.)
+3. SQL Editor > New query. Open supabase-admin-account.sql, replace PUT-YOUR-PASSWORD-HERE with the
+   password you want for the admin account, click Run. It should say: OK: user admin saved (admin).
+   Do NOT upload that file to GitHub after you typed a real password into it.
+4. Click Connect (or Settings > API Keys). Copy the Project URL and the publishable key (sb_publishable_...).
+5. Open sync-config.js with Notepad, paste them between the quotes, save.
+6. Upload ALL files of this folder to your private host (GitHub), replacing the old ones.
+7. Open the app, log in as admin with the password from step 3, click "Manage users" and add each CVC
+   (username + password + role CVC). Give each CVC their username and password.
 
-How it works: every tick / reason is sent to Supabase within a few seconds; every device checks for new data
-about every 30 seconds (and when the app is opened or comes back online). With no internet the changes wait
-on the phone and are sent later. If two people change the same RC item, the later change wins.
-Data stored online: RC ID, CUP/CUV status, reason, note, date and the CVC username. No child names or photos.
-Anyone who has your sync-config.js key could read or change this tracking table, so keep the host private.
-Existing ticks already on a device are uploaded the first time that device syncs.
-"Clear all" is disabled while sync is on.
+Notes:
+- If admin forgets the password: change it in supabase-admin-account.sql and run it again in the SQL Editor.
+- If a CVC forgets the password: Manage users > Reset password, then tell them the new one.
+- Changing a password or deleting an account logs that person out on every phone.
+- 10 wrong passwords in a row lock that account for 10 minutes.
+- A phone needs internet for its first login. After that it keeps working offline, and changes are sent later.
+- Data stored online: accounts (passwords as bcrypt hashes) and for tracking: RC ID, status, reason, note, date,
+  username. No child names or photos. The tables cannot be read or changed directly with the public key;
+  every request must come from a logged-in user.
+- The key in sync-config.js is a public key by design; keep the site private anyway.
+- Without a key in sync-config.js the app still works on one device with its own local accounts.
 
 QUICK START
 1. Open index.html directly for normal offline search and PDF printing.

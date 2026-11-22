@@ -68,7 +68,7 @@ input,select,button{font:inherit;border:1px solid #cbc5bb;border-radius:10px;pad
 @media(max-width:700px){#trackView{padding:12px}#tkList small{display:none}}
 
 
-</style></head><body><div id="loginOverlay"><form id="loginForm" autocomplete="on"><div id="loginBox"><h3>RC Offline Login</h3><input id="u" placeholder="Username" autocomplete="username" autocapitalize="off"><input id="p" type="password" placeholder="Password" autocomplete="current-password"><button type="submit">Login</button><div id="loginErr"></div><p style="font-size:12px">សូមទាក់ទងអ្នកគ្រប់គ្រង ដើម្បីទទួលបានគណនី។</p><p style="font-size:12px;margin:8px 0 0"><a href="#" id="forgotLink">Forgot password?</a></p><p style="font-size:11px;color:#8a948d;margin:6px 0 0">Version 8 &middot; build 22 Nov 2026 (h)</p></div></form></div><header><div><h1>RC Offline Search & Village PDF <span class="v7-badge">Version 8</span></h1><small>ស្វែងរកតាមលេខកូដ • បែងចែកតាមភូមិ • បោះពុម្ពជា PDF</small></div><strong id="online"></strong></header><div id="userBar"><span id="whoami"></span><span id="tkSyncMini" class="tk-mini"></span><button id="manageBtn" class="secondary" style="display:none">Manage users</button><button id="pwdBtn">Change password</button><button id="logoutBtn">Logout</button></div><nav id="tabs"><button class="on" data-tab="search">RC Search / ស្វែងរក RC</button><button data-tab="track">CUP / CUV Tracking / តាមដាន</button></nav>
+</style></head><body><div id="loginOverlay"><form id="loginForm" autocomplete="on"><div id="loginBox"><h3>RC Offline Login</h3><input id="u" placeholder="Username" autocomplete="username" autocapitalize="off"><input id="p" type="password" placeholder="Password" autocomplete="current-password"><button type="submit">Login</button><div id="loginErr"></div><p style="font-size:12px">សូមទាក់ទងអ្នកគ្រប់គ្រង ដើម្បីទទួលបានគណនី។</p><p style="font-size:12px;margin:8px 0 0"><a href="#" id="forgotLink">Forgot password?</a></p><p style="font-size:11px;color:#8a948d;margin:6px 0 0">Version 8 &middot; build 23 Nov 2026 (i)</p></div></form></div><header><div><h1>RC Offline Search & Village PDF <span class="v7-badge">Version 8</span></h1><small>ស្វែងរកតាមលេខកូដ • បែងចែកតាមភូមិ • បោះពុម្ពជា PDF</small></div><strong id="online"></strong></header><div id="userBar"><span id="whoami"></span><span id="tkSyncMini" class="tk-mini"></span><button id="manageBtn" class="secondary" style="display:none">Manage users</button><button id="pwdBtn">Change password</button><button id="logoutBtn">Logout</button></div><nav id="tabs"><button class="on" data-tab="search">RC Search / ស្វែងរក RC</button><button data-tab="track">CUP / CUV Tracking / តាមដាន</button></nav>
 <main id="searchView"><section class="panel"><div class="tools"><input id="search" autocomplete="off" placeholder="Search RC ID or name / ស្វែងរកលេខកូដ ឬ ឈ្មោះ"><select id="village"><option value="">All villages / ភូមិទាំងអស់</option></select><button class="primary" id="pdf">Generate PDF</button></div>
 <div class="actions"><button class="secondary" id="cache">Save visible photos offline</button><label class="secondary" style="display:inline-flex;align-items:center;cursor:pointer">Add local photos<input id="files" type="file" accept="image/*" multiple hidden></label><button id="clear">Clear offline photos</button><span id="progress"></span></div>
 <details class="v8-help"><summary>ជំនួយ (ចុចដើម្បីមើល)</summary><p>សម្រាប់ប្រើក្រៅបណ្ដាញ៖ នៅពេលមានអ៊ីនធឺណិត សូមជ្រើសរើសភូមិមួយ ហើយចុច «Save visible photos offline»។ អ្នកក៏អាចបន្ថែមរូបថតក្នុងឧបករណ៍ ដែលឈ្មោះឯកសារមានលេខ RC ID ដូចជា CAM-199774-0305.jpg។</p><p>នៅលើកាតកុមារនីមួយៗ (ដែលមានអ្នកទំនុកបំរុង) អ្នកអាចដាក់ធីក CUP / CUV ពេលធ្វើរួច ឬចុច ✗ ដើម្បីជ្រើសរើសមូលហេតុមិនអាចថតបាន។ ទិន្នន័យនេះបង្ហាញក្នុងផ្ទាំងតាមដាន និងរបាយការណ៍ដោយស្វ័យប្រវត្តិ។</p></details><div class="privacy">Child records and photos are sensitive. Keep this HTML file only on authorized devices and do not share it publicly.</div></section><div class="stats" id="stats"></div><section class="cards" id="cards"></section></main><section id="trackView">
@@ -141,6 +141,7 @@ $('#pdf').onclick=async()=>{let list=filtered();if(!list.length){alert('No match
 <div class="v8-add" style="grid-template-columns:1fr auto;margin-top:10px"><input id="rcCode" type="text" placeholder="Recovery code for &quot;Forgot password?&quot; (min 6)" autocomplete="off"><button id="rcSet">Set recovery code</button></div><p class="v8-note" id="rcStat"></p>
 <div class="v8-row"><button id="uExport">Export users</button><label class="v8-btnlabel">Import users<input id="uImport" type="file" accept="application/json,.json" hidden></label><button id="adminClose" style="margin-left:auto">Close</button></div>
 <details class="v8-help"><summary>ជំនួយ (ចុចដើម្បីមើល)</summary><p>គណនីត្រូវបានរក្សាទុកតែក្នុងឧបករណ៍នេះប៉ុណ្ណោះ។ ដើម្បីផ្តល់គណនីដូចគ្នាទៅឧបករណ៍ CVC ផ្សេងទៀត សូមប្រើ «Export users» នៅទីនេះ ហើយ «Import users» នៅឧបករណ៍ផ្សេង (ពាក្យសម្ងាត់ត្រូវបាននាំចេញជា hash មិនមែនជាអក្សរធម្មតាទេ)។</p></details><div id="adminMsg" class="v8-msg"></div></div></div>
+<script src="sync-config.js"></script>
 <script>
 (function(){
   'use strict';
@@ -197,6 +198,30 @@ $('#pdf').onclick=async()=>{let list=filtered();if(!list.length){alert('No match
   const adminCount=()=>accounts.filter(x=>x.role==='admin').length;
   let me=null;window.rcCurrentUser=()=>me;
 
+  /* ---------- central accounts on Supabase (used when sync-config.js is filled in) ---------- */
+  const CFG=window.CVC_SYNC||{};
+  const CB=String(CFG.url||'').trim().replace(/\/+$/,''),CK=String(CFG.key||'').trim();
+  const CENTRAL=/^(https:\/\/\S+|http:\/\/(localhost|127\.0\.0\.1)\S*)$/i.test(CB)&&!!CK;
+  const SESS='rc_session_v9',OFFL='rc_offline_v9',NOTICE='rc_notice';
+  let sess=null;
+  const readJ=k=>{try{return JSON.parse(S.get(k))}catch(e){return null}};
+  const keepSession=s=>{S.set(SESS,JSON.stringify(s));S.set(LOG,'1');S.set(SES,s.username)};
+  function dropOffline(u){const o=readJ(OFFL)||{};delete o[String(u||'').toLowerCase()];S.set(OFFL,JSON.stringify(o))}
+  function forceLogout(text){if(sess)dropOffline(sess.username);S.remove(SESS);S.remove(LOG);S.remove(SES);S.set(NOTICE,text||'សូមចូលម្តងទៀត។ អ្នកគ្រប់គ្រងបានផ្លាស់ប្តូរគណនីរបស់អ្នក។');location.reload()}
+  async function rpc(name,body,anon){
+    const h={apikey:CK,'Content-Type':'application/json'};if(CK.indexOf('eyJ')===0)h.Authorization='Bearer '+CK;
+    const b=Object.assign({},body||{});if(!anon&&sess)b.p_token=sess.token;
+    const res=await fetch(CB+'/rest/v1/rpc/'+name,{method:'POST',headers:h,body:JSON.stringify(b),cache:'no-store'});
+    let data=null;try{data=await res.json()}catch(e){}
+    if(!res.ok){const er=new Error((data&&data.message)||('HTTP '+res.status));er.status=res.status;if(res.status===401&&!anon&&sess&&er.message==='unauthorized')forceLogout();throw er}
+    return data;
+  }
+  window.rcAuth={central:CENTRAL,rpc:rpc,hasSession:()=>!!(sess&&sess.token)};
+  const saveOffline=(s,p)=>{const o=readJ(OFFL)||{},salt=rnd();o[s.username.toLowerCase()]={username:s.username,role:s.role,token:s.token,salt:salt,hash:hashPw(salt,p)};S.set(OFFL,JSON.stringify(o))};
+  const offlineLogin=(u,p)=>{const o=(readJ(OFFL)||{})[String(u).trim().toLowerCase()];return o&&o.hash===hashPw(o.salt,p)?o:null};
+  const ERR={exists:'That username already exists',last_admin:'At least one Admin account must remain.',weak_password:'Password must be at least '+MINPW+' characters',bad_username:'Username: 2-40 characters, no spaces',wrong_password:'Current password is incorrect',self:'You cannot delete your own account',not_found:'User not found',forbidden:'Only an Admin can do this',unauthorized:'Session expired, please log in again'};
+  const em=e=>ERR[e.message]||('Error: '+e.message+(e.status?' (HTTP '+e.status+')':''));
+
   /* ---------- login / session ---------- */
   function afterLogin(user){
     me=user;
@@ -206,15 +231,32 @@ $('#pdf').onclick=async()=>{let list=filtered();if(!list.length){alert('No match
     $$('manageBtn').style.display=user.role==='admin'?'':'none';
   }
   if(!S.ok)$$('loginErr').textContent='Browser storage is blocked here. Open this link in Chrome or Safari (not inside another app) so accounts can be saved.';
+  async function loginCentral(){
+    const u=$$('u').value.trim(),p=$$('p').value.trim(),err=$$('loginErr'),b=$$('loginBox').querySelector('button[type=submit]');
+    if(!u||!p){err.textContent='Invalid username or password';return}
+    const label=b.textContent;b.disabled=true;b.textContent='…';err.textContent='';
+    try{
+      const d=await rpc('cvc_login',{p_username:u,p_password:p},true);
+      if(d&&d.ok){sess={username:d.username,role:d.role,token:d.token};keepSession(sess);saveOffline(sess,p);$$('p').value='';afterLogin({username:sess.username,role:sess.role})}
+      else err.textContent=d&&d.locked?'គណនីត្រូវបានចាក់សោបណ្តោះអាសន្ន។ សូមព្យាយាមម្តងទៀតក្រោយ ១០ នាទី ឬទាក់ទងអ្នកគ្រប់គ្រង។':'Invalid username or password';
+    }catch(e){
+      if(e.status)err.textContent='មិនអាចចូលបាន៖ '+e.message+' (HTTP '+e.status+')';
+      else{const o=offlineLogin(u,p);
+        if(o){sess={username:o.username,role:o.role,token:o.token};keepSession(sess);$$('p').value='';afterLogin({username:o.username,role:o.role})}
+        else err.textContent='ត្រូវការអ៊ីនធឺណិត សម្រាប់ការចូលលើកដំបូងនៅឧបករណ៍នេះ។'}
+    }
+    b.disabled=false;b.textContent=label;
+  }
   $$('loginForm').addEventListener('submit',e=>{
     e.preventDefault();
+    if(CENTRAL){loginCentral();return}
     const u=find($$('u').value),p=$$('p').value;
     if(u&&(u.hash===hashPw(u.salt,p)||(p!==p.trim()&&u.hash===hashPw(u.salt,p.trim())))){
       try{S.set(LOG,'1');S.set(SES,u.username)}catch(_){}
       $$('p').value='';$$('loginErr').textContent='';afterLogin(u);
     }else $$('loginErr').textContent='Invalid username or password';
   });
-  $$('logoutBtn').addEventListener('click',()=>{S.remove(LOG);S.remove(SES);location.reload()});
+  $$('logoutBtn').addEventListener('click',()=>{S.remove(LOG);S.remove(SES);S.remove(SESS);location.reload()});
   /* ---------- forgot password (admin reset, optional recovery code) ---------- */
   const RKEY='rc_recovery_v8';
   function recRead(){try{const r=JSON.parse(S.get(RKEY));return r&&r.salt&&r.hash?r:null}catch(e){return null}}
@@ -237,10 +279,20 @@ $('#pdf').onclick=async()=>{let list=filtered();if(!list.length){alert('No match
     $$('loginErr').textContent='Password reset. Log in with the new password.';
   });
   (function resume(){
+    if(CENTRAL)return;
     if(S.get(LOG)!=='1')return;
     const u=find(S.get(SES));
     if(u)afterLogin(u);else{S.remove(LOG);S.remove(SES)}
   })();
+
+  if(CENTRAL){
+    const note=S.get(NOTICE);if(note){$$('loginErr').textContent=note;S.remove(NOTICE)}
+    const s=readJ(SESS);
+    if(s&&s.token&&S.get(LOG)==='1'){
+      sess=s;afterLogin({username:s.username,role:s.role});
+      rpc('cvc_whoami').then(d=>{if(d&&d.role&&d.role!==sess.role){sess.role=d.role;S.set(SESS,JSON.stringify(sess));afterLogin({username:sess.username,role:sess.role})}}).catch(()=>{});
+    }
+  }
 
   /* ---------- change own password ---------- */
   let forced=false;
@@ -254,7 +306,15 @@ $('#pdf').onclick=async()=>{let list=filtered();if(!list.length){alert('No match
   }
   $$('pwdBtn').addEventListener('click',()=>openPwd(false));
   $$('pwdCancel').addEventListener('click',()=>$$('pwdModal').classList.remove('open'));
+  async function changePwdCentral(){
+    const old=$$('oldPwd').value.trim(),nw=$$('newPwd').value.trim(),m=$$('pwdMsg');m.className='v8-msg err';
+    if(nw.length<MINPW){m.textContent='New password must be at least '+MINPW+' characters';return}
+    if(nw!==$$('newPwd2').value.trim()){m.textContent='New passwords do not match';return}
+    if(nw===old){m.textContent='New password must be different';return}
+    try{await rpc('cvc_change_password',{p_old:old,p_new:nw});saveOffline(sess,nw);$$('pwdModal').classList.remove('open')}catch(e){m.textContent=em(e)}
+  }
   $$('pwdSave').addEventListener('click',()=>{
+    if(CENTRAL){changePwdCentral();return}
     const old=$$('oldPwd').value,nw=$$('newPwd').value,m=$$('pwdMsg');m.className='v8-msg err';
     if(hashPw(me.salt,old)!==me.hash){m.textContent='Current password is incorrect';return}
     if(nw.length<MINPW){m.textContent='New password must be at least '+MINPW+' characters';return}
@@ -292,9 +352,40 @@ $('#pdf').onclick=async()=>{let list=filtered();if(!list.length){alert('No match
       tr.append(td1,td2,td3,td4);tb.appendChild(tr);
     });
   }
-  $$('manageBtn').addEventListener('click',()=>{if(!me||me.role!=='admin')return;msg('',true);renderUsers();rcStat();$$('adminModal').classList.add('open')});
+  function renderUsersC(list){
+    const tb=$$('userRows');tb.innerHTML='';
+    list.forEach(u=>{
+      const tr=document.createElement('tr'),isMe=u.username.toLowerCase()===me.username.toLowerCase();
+      const td1=document.createElement('td');td1.textContent=u.username+(isMe?' (you)':'');
+      const td2=document.createElement('td'),sel=document.createElement('select');sel.className='v8-small';
+      [['cvc','CVC'],['admin','Admin']].forEach(([v,l])=>sel.add(new Option(l,v)));sel.value=u.role;
+      sel.onchange=async()=>{try{await rpc('cvc_admin_update_user',{p_username:u.username,p_role:sel.value});await loadUsersC();msg('Role updated for '+u.username,true)}catch(e){sel.value=u.role;msg(em(e))}};
+      td2.appendChild(sel);
+      const td3=document.createElement('td');td3.textContent=u.last_login?('Last login '+new Date(u.last_login).toLocaleDateString()):'Not logged in yet';
+      const td4=document.createElement('td');td4.className='v8-actions';
+      td4.appendChild(btn('Reset password',async()=>{
+        const p=prompt('New password for '+u.username+' (min '+MINPW+' characters).\nTheir phones will be logged out and must use this new password:');
+        if(p===null)return;const pw=p.trim();
+        if(pw.length<MINPW){msg('Password must be at least '+MINPW+' characters');return}
+        try{await rpc('cvc_admin_update_user',{p_username:u.username,p_password:pw});msg('Password reset for '+u.username+'. Give them the new password.',true)}catch(e){msg(em(e))}}));
+      if(!isMe)td4.appendChild(btn('Delete',async()=>{
+        if(!confirm('Delete user '+u.username+'? They will be logged out everywhere.'))return;
+        try{await rpc('cvc_admin_delete_user',{p_username:u.username});await loadUsersC();msg('Deleted '+u.username,true)}catch(e){msg(em(e))}},'danger'));
+      tr.append(td1,td2,td3,td4);tb.appendChild(tr);
+    });
+  }
+  async function loadUsersC(){try{renderUsersC(await rpc('cvc_admin_list_users'))}catch(e){msg(em(e))}}
+  $$('manageBtn').addEventListener('click',()=>{if(!me||me.role!=='admin')return;msg('',true);if(CENTRAL){$$('userRows').innerHTML='<tr><td colspan="4">…</td></tr>';loadUsersC()}else{renderUsers();rcStat()}$$('adminModal').classList.add('open')});
   $$('adminClose').addEventListener('click',()=>$$('adminModal').classList.remove('open'));
-  $$('nuAdd').addEventListener('click',()=>{
+  $$('nuAdd').addEventListener('click',async()=>{
+    if(CENTRAL){
+      const name=$$('nuName').value.trim(),pw=$$('nuPass').value.trim();
+      if(name.length<2){msg('Enter a username (at least 2 characters)');return}
+      if(/\s/.test(name)){msg('Username cannot contain spaces');return}
+      if(pw.length<MINPW){msg('Password must be at least '+MINPW+' characters');return}
+      try{await rpc('cvc_admin_create_user',{p_username:name,p_password:pw,p_role:$$('nuRole').value});$$('nuName').value='';$$('nuPass').value='';await loadUsersC();msg('User '+name+' added. Give them this username and password.',true)}catch(e){msg(em(e))}
+      return;
+    }
     const name=$$('nuName').value.trim(),pw=$$('nuPass').value;
     if(name.length<2){msg('Enter a username (at least 2 characters)');return}
     if(/\s/.test(name)){msg('Username cannot contain spaces');return}
@@ -333,6 +424,12 @@ $('#pdf').onclick=async()=>{let list=filtered();if(!list.length){alert('No match
     const salt=rnd();S.set(RKEY,JSON.stringify({salt:salt,hash:hashPw(salt,c)}));$$('rcCode').value='';rcStat();msg('Recovery code saved on this device. Keep it somewhere safe.',true);
   });
 
+  if(CENTRAL){
+    [$$('uExport'),$$('uImport').parentElement,$$('rcCode').parentElement,$$('rcStat'),$$('forgotLink').parentElement].forEach(el=>{if(el)el.style.display='none'});
+    const hp=$$('adminModal').querySelector('.v8-help p');
+    if(hp)hp.textContent='គណនីត្រូវបានរក្សាទុកក្នុងមូលដ្ឋានទិន្នន័យរួម។ អ្នកគ្រប់គ្រងបង្កើត ឬកែគណនីតែម្តង ហើយ CVC ចូលបានគ្រប់ឧបករណ៍ដោយឈ្មោះអ្នកប្រើ និងពាក្យសម្ងាត់ដូចគ្នា។ ពេលចូលម្តង ឧបករណ៍នឹងចងចាំរហូតដល់ចុច Logout ឬអ្នកគ្រប់គ្រងផ្លាស់ប្តូរពាក្យសម្ងាត់ ឬលុបគណនី។ ប្រសិនបើអ្នកគ្រប់គ្រងភ្លេចពាក្យសម្ងាត់ សូមប្រើ supabase-admin-account.sql។';
+  }
+
   /* ---------- photo zoom + offline app support (unchanged) ---------- */
   const modal=document.getElementById('photoModal'), full=document.getElementById('photoFull');
   document.addEventListener('click',e=>{if(e.target.matches('.photo img')){full.src=e.target.src;modal.classList.add('open')}});
@@ -340,7 +437,6 @@ $('#pdf').onclick=async()=>{let list=filtered();if(!list.length){alert('No match
   if('serviceWorker' in navigator && location.protocol.startsWith('http')){if(navigator.serviceWorker.controller)navigator.serviceWorker.addEventListener('controllerchange',()=>{if(!window.__rl){window.__rl=1;location.reload()}});navigator.serviceWorker.register('./service-worker.js').catch(()=>{})}
 })();
 </script>
-<script src="sync-config.js"></script>
 <script>
 (function(){
   'use strict';
@@ -377,10 +473,7 @@ $('#pdf').onclick=async()=>{let list=filtered();if(!list.length){alert('No match
 
   /* ---------- online sync (Supabase REST, optional) ---------- */
   const CFG=window.CVC_SYNC||{};
-  const SYNC_URL=String(CFG.url||'').trim().replace(/\/+$/,'');
-  const SKEY=String(CFG.key||'').trim();
-  const SYNC_ON=/^(https:\/\/\S+|http:\/\/(localhost|127\.0\.0\.1)\S*)$/i.test(SYNC_URL)&&!!SKEY;
-  const EP=SYNC_URL+'/rest/v1/cvc_tracking';
+  const SYNC_ON=!!(window.rcAuth&&window.rcAuth.central);
   const META='rc_track_sync';
   let meta={cursor:'',seq:0,dirty:{},last:''};
   try{const m=JSON.parse(localStorage.getItem(META)||'null');if(m&&typeof m==='object'){meta=Object.assign(meta,m);if(!meta.dirty||typeof meta.dirty!=='object')meta.dirty={}}}catch(e){}
@@ -388,7 +481,6 @@ $('#pdf').onclick=async()=>{let list=filtered();if(!list.length){alert('No match
   const snap=(r,k)=>JSON.stringify([r[k],r[k==='p'?'pb':'vb'],r[k+'c']]);
   let busy=false,again=false,pushTimer=null,state='idle',errText='';
   function touch(id,k){if(!SYNC_ON)return;meta.seq++;meta.dirty[id+'|'+k]=meta.seq;saveMeta();clearTimeout(pushTimer);pushTimer=setTimeout(syncNow,1500);renderSync()}
-  const hdr=extra=>{const h={apikey:SKEY};if(SKEY.indexOf('eyJ')===0)h.Authorization='Bearer '+SKEY;return Object.assign(h,extra||{})};
   const hhmm=iso=>{try{const d=new Date(iso);return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')}catch(e){return ''}};
   function renderSync(){
     const el=q('tkSyncTxt'),btn=q('tkSyncBtn'),mini=q('tkSyncMini');if(!el)return;
@@ -421,10 +513,9 @@ $('#pdf').onclick=async()=>{let list=filtered();if(!list.length){alert('No match
         return {rc_id:id,item:item,status:status,
           reason:status==='cnp'?c.r:null,note:status==='cnp'?(c.n||null):null,
           act_date:status==='done'?r[item]:(status==='cnp'?c.d:null),
-          by_user:status==='done'?(r[kb]||null):(status==='cnp'?(c.b||null):(who()||null))};
+          };
       });
-      const res=await fetch(EP+'?on_conflict=rc_id,item',{method:'POST',headers:hdr({'Content-Type':'application/json',Prefer:'resolution=merge-duplicates,return=minimal'}),body:JSON.stringify(rows),cache:'no-store'});
-      if(!res.ok)throw new Error('HTTP '+res.status+' '+(await res.text().catch(()=>'')).slice(0,160));
+      await window.rcAuth.rpc('cvc_track_push',{p_rows:rows});
       chunk.forEach(key=>{if(meta.dirty[key]===sent[key])delete meta.dirty[key]});
       saveMeta();
     }
@@ -435,10 +526,8 @@ $('#pdf').onclick=async()=>{let list=filtered();if(!list.length){alert('No match
     if(!first){const ms=Date.parse(trim3(meta.cursor));if(!isNaN(ms))from=new Date(ms-120000).toISOString()}
     let offset=0,maxTs=meta.cursor||'',changed=false;const seen=new Set();
     for(;;){
-      const url=EP+'?select=*&order=updated_at.asc,rc_id.asc,item.asc&limit=1000&offset='+offset+(from?'&updated_at=gte.'+encodeURIComponent(from):'');
-      const res=await fetch(url,{headers:hdr(),cache:'no-store'});
-      if(!res.ok)throw new Error('HTTP '+res.status+' '+(await res.text().catch(()=>'')).slice(0,160));
-      const rows=await res.json();if(!Array.isArray(rows))throw new Error('Unexpected reply');
+      const rows=await window.rcAuth.rpc('cvc_track_pull',{p_since:from||null,p_offset:offset,p_limit:1000});
+      if(!Array.isArray(rows))throw new Error('Unexpected reply');
       rows.forEach(row=>{
         const key=row.rc_id+'|'+row.item;seen.add(key);
         if(row.updated_at&&String(row.updated_at)>maxTs)maxTs=String(row.updated_at);
@@ -455,7 +544,7 @@ $('#pdf').onclick=async()=>{let list=filtered();if(!list.length){alert('No match
     return changed;
   }
   async function syncNow(){
-    if(!SYNC_ON||!me()){return}
+    if(!SYNC_ON||!me()||!window.rcAuth.hasSession()){return}
     if(busy){again=true;return}
     busy=true;state='syncing';renderSync();let changed=false;
     try{
