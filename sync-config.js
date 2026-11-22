@@ -6,6 +6,6 @@
    pollSeconds : how often each device checks for new data (default 30)            */
 window.CVC_SYNC = {
   url: "https://uggarnonbhoefdctcqph.supabase.co",
-  key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVnZ2Fybm9uYmhvZWZkY3RjcXBoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUzNDMwMTAsImV4cCI6MjExMDkxOTAxMH0.FvthU_16SOSXZd5HGbXA62p8-aFa3ZcT_46Tgt6hOG0",
+  key: "",
   pollSeconds: 30
 };

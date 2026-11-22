@@ -23,6 +23,9 @@ Passwords are stored as salted hashes. This is a sign-in gate, not strong securi
 the child records are inside index.html, so keep the files on authorized devices only.
 
 CUP / CUV TRACKING
+Easiest way: in "RC Search", every RC that has a sponsor shows a green tick area at the bottom of its card.
+Tick CUP and CUV when done, or press the red X and choose a reason if it could not be done.
+It is saved at once and appears in the tracking tab and in the admin overview. RC without a sponsor have no tick area.
 Open the "CUP / CUV Tracking" tab. Only RC with a sponsor (status "មានអ្នកទំនុកបំរុង") are listed.
 - Top: totals and progress by village (Sponsored RC, CUP done, CUV done, Complete, Pending).
 - Click a village to open its checklist, then tick CUP and CUV for each RC. Untick to undo.
